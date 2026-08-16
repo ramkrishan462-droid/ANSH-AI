@@ -24,7 +24,7 @@ app.post("/api/chat", async (req, res) => {
       .join("\n");
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash-lite",
+      model: "gemini-2.5-pro",
 
       contents: `
 You are ANSH AI.
