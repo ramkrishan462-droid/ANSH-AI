@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ANSH AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">🤖</div>
+
+            <div>
+                <h2>ANSH AI</h2>
+                <span>Personal AI</span>
+            </div>
+        </div>
+
+        <button class="new-chat" onclick="newChat()">
+            ＋ New Chat
+        </button>
+
+        <div class="history-title">
+            CHAT HISTORY
+        </div>
+
+        <div id="historyList" class="history-list"></div>
+
+        <div class="sidebar-bottom">
+
+            <button onclick="clearAllChats()" class="side-btn">
+                🗑️ Clear All Chats
+            </button>
+
+            <button onclick="toggleTheme()" class="side-btn">
+                🌙 Dark / Light
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <section class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <button class="menu-button" onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <div class="mobile-title">
+                🤖 <b>ANSH AI</b>
+            </div>
+
+            <button class="top-new" onclick="newChat()">
+                ＋
+            </button>
+
+        </header>
+
+
+        <!-- CHAT -->
+        <main id="chatBox" class="chat-box">
+
+            <div id="welcome" class="welcome">
+
+                <div class="welcome-logo">
+                    🤖
+                </div>
+
+                <h1>
+                    Hello, I'm <span>ANSH AI</span>
+                </h1>
+
+                <p>
+                    आपका Personal AI Assistant
+                </p>
+
+                <div class="languages">
+                    🇮🇳 Hindi • 🇬🇧 English • Hinglish
+                </div>
+
+                <div class="suggestions">
+
+                    <button onclick="useSuggestion('Arduino क्या है?')">
+                        🔧 Arduino क्या है?
+                    </button>
+
+                    <button onclick="useSuggestion('मुझे एक कहानी सुनाओ')">
+                        📖 एक कहानी सुनाओ
+                    </button>
+
+                    <button onclick="useSuggestion('Explain artificial intelligence')">
+                        🧠 Explain AI
+                    </button>
+
+                    <button onclick="useSuggestion('Give me a Python code example')">
+                        💻 Code लिखो
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- INPUT -->
+        <div class="input-container">
+
+            <div class="input-box">
+
+                <button
+                    id="micButton"
+                    onclick="startVoice()"
+                    title="Voice Input">
+                    🎤
+                </button>
+
+                <textarea
+                    id="userInput"
+                    rows="1"
+                    placeholder="ANSH AI से कुछ पूछें..."
+                    onkeydown="handleKey(event)"
+                ></textarea>
+
+                <button
+                    id="sendButton"
+                    onclick="sendMessage()"
+                    title="Send">
+                    ➤
+                </button>
+
+            </div>
+
+            <div class="input-info">
+                Enter = Send • Shift + Enter = New Line
+            </div>
+
+        </div>
+
+
+        <footer>
+            ANSH AI may make mistakes. Check important information.
+        </footer>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
