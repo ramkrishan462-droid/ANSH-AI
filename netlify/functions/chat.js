@@ -24,7 +24,7 @@ exports.handler = async (event) => {
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
+      model: "gemini-3.5-flash-lite",
       contents: `
 You are ANSH AI.
 
