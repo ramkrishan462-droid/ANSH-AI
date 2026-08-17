@@ -169,6 +169,29 @@
 </div>
 
 <script src="script.js"></script>
+<!-- AI IMAGE CREATOR -->
 
+<div class="image-section">
+
+    <h2>🎨 AI Image Creator</h2>
+
+    <input
+        type="text"
+        id="imagePrompt"
+        placeholder="Write what image you want..."
+    >
+
+    <button onclick="generateImage()">
+        🎨 Generate Image
+    </button>
+
+    <p id="imageStatus"></p>
+
+    <img
+        id="generatedImage"
+        style="display:none; width:100%; max-width:600px;"
+    >
+
+</div>
 </body>
 </html>

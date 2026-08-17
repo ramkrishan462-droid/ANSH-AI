@@ -978,3 +978,82 @@ document.getElementById("imageInput")
     reader.readAsDataURL(file);
 
 });
+
+// =====================================
+// AI IMAGE GENERATOR
+// =====================================
+
+async function generateImage() {
+
+    const promptInput =
+        document.getElementById("imagePrompt");
+
+    const status =
+        document.getElementById("imageStatus");
+
+    const image =
+        document.getElementById("generatedImage");
+
+    // Prompt lena
+    const prompt = promptInput.value.trim();
+
+    // Agar prompt empty hai
+    if (prompt === "") {
+
+        status.innerText =
+            "⚠️ Pehle image ka description likho.";
+
+        return;
+    }
+
+    // Loading message
+    status.innerText =
+        "🎨 AI image bana raha hai...";
+
+    image.style.display = "none";
+
+    try {
+
+        // Netlify backend ko request
+        const response = await fetch(
+            "/.netlify/functions/generate-image",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    prompt: prompt
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        // Error check
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Image generation failed"
+            );
+        }
+
+        // Generated image show karo
+        image.src = data.image;
+
+        image.style.display = "block";
+
+        status.innerText =
+            "✅ Image ready!";
+
+    } catch (error) {
+
+        console.error(error);
+
+        status.innerText =
+            "❌ " + error.message;
+    }
+}
