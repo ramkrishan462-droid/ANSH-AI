@@ -5,6 +5,7 @@
 const chatBox = document.getElementById("chatBox");
 const userInput = document.getElementById("userInput");
 const historyList = document.getElementById("historyList");
+let selectedImage = null;
 
 let chats =
     JSON.parse(localStorage.getItem("anshAIChats")) || [];
@@ -84,7 +85,8 @@ async function sendMessage() {
                             content:
                                 message.text
 
-                        }))
+                        })),
+                        image: selectedImage
 
                 })
 
@@ -955,3 +957,24 @@ function scrollToBottom() {
     );
 
 }
+document.getElementById("imageInput")
+.addEventListener("change", function(e){
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        selectedImage = event.target.result;
+
+        document.getElementById("imagePreview").innerHTML =
+        `<img src="${selectedImage}">`;
+
+    };
+
+    reader.readAsDataURL(file);
+
+});

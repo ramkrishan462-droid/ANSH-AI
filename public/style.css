@@ -638,3 +638,25 @@ footer {
         max-width: 85%;
     }
 }
+#imageBtn{
+    cursor:pointer;
+    font-size:22px;
+    padding:8px;
+    color:white;
+}
+
+#imageBtn:hover{
+    opacity:0.8;
+}
+
+#imagePreview{
+    margin-top:10px;
+    text-align:center;
+}
+
+#imagePreview img{
+    max-width:200px;
+    max-height:200px;
+    border-radius:10px;
+    border:1px solid var(--border);
+}
