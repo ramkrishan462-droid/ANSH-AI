@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>ANSH AI</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,7 +16,6 @@
 
         <div class="brand">
             <div class="brand-logo">🤖</div>
-
             <div>
                 <h2>ANSH AI</h2>
                 <span>Personal AI</span>
@@ -49,11 +46,9 @@
 
     </aside>
 
-
     <!-- MAIN -->
     <section class="main">
 
-        <!-- TOP BAR -->
         <header class="topbar">
 
             <button class="menu-button" onclick="toggleSidebar()">
@@ -70,23 +65,18 @@
 
         </header>
 
-
         <!-- CHAT -->
         <main id="chatBox" class="chat-box">
 
             <div id="welcome" class="welcome">
 
-                <div class="welcome-logo">
-                    🤖
-                </div>
+                <div class="welcome-logo">🤖</div>
 
                 <h1>
                     Hello, I'm <span>ANSH AI</span>
                 </h1>
 
-                <p>
-                    आपका Personal AI Assistant
-                </p>
+                <p>आपका Personal AI Assistant</p>
 
                 <div class="languages">
                     🇮🇳 Hindi • 🇬🇧 English • Hinglish
@@ -102,11 +92,11 @@
                         📖 एक कहानी सुनाओ
                     </button>
 
-                    <button onclick="useSuggestion('Explain artificial intelligence')">
+                    <button onclick="useSuggestion('Explain Artificial Intelligence')">
                         🧠 Explain AI
                     </button>
 
-                    <button onclick="useSuggestion('Give me a Python code example')">
+                    <button onclick="useSuggestion('Give me Python code')">
                         💻 Code लिखो
                     </button>
 
@@ -116,27 +106,35 @@
 
         </main>
 
+        <!-- IMAGE PREVIEW -->
+        <div id="imagePreview"></div>
 
         <!-- INPUT -->
         <div class="input-container">
 
             <div class="input-box">
 
+                <!-- IMAGE BUTTON -->
+                <label for="imageInput" id="imageBtn">
+                    🖼️
+                </label>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <!-- MIC BUTTON -->
                 <button
                     id="micButton"
                     onclick="startVoice()"
                     title="Voice Input">
                     🎤
                 </button>
-<label for="imageInput" id="imageBtn" title="Upload Image">
-    🖼️
-</label>
 
-<input
-    type="file"
-    id="imageInput"
-    accept="image/*"
-    hidden>
+                <!-- TEXT AREA -->
                 <textarea
                     id="userInput"
                     rows="1"
@@ -144,6 +142,7 @@
                     onkeydown="handleKey(event)"
                 ></textarea>
 
+                <!-- SEND -->
                 <button
                     id="sendButton"
                     onclick="sendMessage()"
@@ -152,13 +151,12 @@
                 </button>
 
             </div>
-<div id="imagePreview"></div>
+
             <div class="input-info">
                 Enter = Send • Shift + Enter = New Line
             </div>
 
-        </div>s
-
+        </div>
 
         <footer>
             ANSH AI may make mistakes. Check important information.
@@ -169,29 +167,6 @@
 </div>
 
 <script src="script.js"></script>
-<!-- AI IMAGE CREATOR -->
 
-<div class="image-section">
-
-    <h2>🎨 AI Image Creator</h2>
-
-    <input
-        type="text"
-        id="imagePrompt"
-        placeholder="Write what image you want..."
-    >
-
-    <button onclick="generateImage()">
-        🎨 Generate Image
-    </button>
-
-    <p id="imageStatus"></p>
-
-    <img
-        id="generatedImage"
-        style="display:none; width:100%; max-width:600px;"
-    >
-
-</div>
 </body>
 </html>
