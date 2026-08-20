@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ANSH AI</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,162 +14,501 @@
 
 <div class="app">
 
-    <!-- SIDEBAR -->
+    <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar" id="sidebar">
 
-        <div class="brand">
-            <div class="brand-logo">🤖</div>
-            <div>
-                <h2>ANSH AI</h2>
-                <span>Personal AI</span>
+        <div class="sidebar-top">
+
+            <div class="brand">
+                <div class="brand-logo">✦</div>
+
+                <div>
+                    <div class="brand-name">ANSH AI</div>
+                    <div class="brand-subtitle">Your AI Assistant</div>
+                </div>
             </div>
+
+            <button
+                class="close-sidebar"
+                id="closeSidebar"
+                type="button">
+                ×
+            </button>
+
         </div>
 
-        <button class="new-chat" onclick="newChat()">
-            ＋ New Chat
+
+        <button
+            class="new-chat-btn"
+            id="newChat"
+            type="button">
+
+            <span>＋</span>
+            <span>New Chat</span>
+
         </button>
 
-        <div class="history-title">
-            CHAT HISTORY
+
+        <div class="sidebar-section">
+
+            <div class="section-title">
+                Recent Chats
+            </div>
+
+            <div
+                class="chat-history"
+                id="chatHistory">
+            </div>
+
         </div>
 
-        <div id="historyList" class="history-list"></div>
 
         <div class="sidebar-bottom">
 
-            <button onclick="clearAllChats()" class="side-btn">
-                🗑️ Clear All Chats
+            <button
+                class="side-button"
+                id="clearChat"
+                type="button">
+
+                <span>🗑</span>
+                Clear Chat
+
             </button>
 
-            <button onclick="toggleTheme()" class="side-btn">
-                🌙 Dark / Light
+
+            <button
+                class="side-button"
+                id="themeButton"
+                type="button">
+
+                <span>☾</span>
+                Theme
+
             </button>
 
         </div>
 
     </aside>
 
-    <!-- MAIN -->
-    <section class="main">
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay">
+    </div>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- HEADER -->
 
         <header class="topbar">
 
-            <button class="menu-button" onclick="toggleSidebar()">
-                ☰
-            </button>
+            <div class="topbar-left">
 
-            <div class="mobile-title">
-                🤖 <b>ANSH AI</b>
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button">
+                    ☰
+                </button>
+
+
+                <div class="mobile-brand">
+                    <div class="mobile-logo">✦</div>
+
+                    <div>
+                        <strong>ANSH AI</strong>
+                        <small>AI Assistant</small>
+                    </div>
+                </div>
+
             </div>
 
-            <button class="top-new" onclick="newChat()">
-                ＋
-            </button>
+
+            <div class="topbar-status">
+
+                <span class="status-dot"></span>
+
+                <span>Online</span>
+
+            </div>
 
         </header>
 
-        <!-- CHAT -->
-        <main id="chatBox" class="chat-box">
 
-            <div id="welcome" class="welcome">
+        <!-- ================= CHAT ================= -->
 
-                <div class="welcome-logo">🤖</div>
+        <section
+            class="chat-container"
+            id="chat">
+
+            <!-- WELCOME -->
+
+            <div
+                class="welcome-screen"
+                id="welcomeScreen">
+
+                <div class="welcome-glow"></div>
+
+                <div class="welcome-logo">
+                    ✦
+                </div>
 
                 <h1>
                     Hello, I'm <span>ANSH AI</span>
                 </h1>
 
-                <p>आपका Personal AI Assistant</p>
+                <p>
+                    Your intelligent AI assistant for
+                    chatting, coding and creating images.
+                </p>
 
-                <div class="languages">
-                    🇮🇳 Hindi • 🇬🇧 English • Hinglish
-                </div>
 
-                <div class="suggestions">
+                <div class="quick-actions">
 
-                    <button onclick="useSuggestion('Arduino क्या है?')">
-                        🔧 Arduino क्या है?
+                    <button
+                        class="quick-card"
+                        data-prompt="Explain Artificial Intelligence in simple words.">
+
+                        <div class="quick-icon">💡</div>
+
+                        <div>
+                            <strong>Ask Anything</strong>
+                            <small>Get intelligent answers</small>
+                        </div>
+
                     </button>
 
-                    <button onclick="useSuggestion('मुझे एक कहानी सुनाओ')">
-                        📖 एक कहानी सुनाओ
+
+                    <button
+                        class="quick-card"
+                        data-prompt="Write a simple Python program for beginners.">
+
+                        <div class="quick-icon">💻</div>
+
+                        <div>
+                            <strong>Write Code</strong>
+                            <small>Build something amazing</small>
+                        </div>
+
                     </button>
 
-                    <button onclick="useSuggestion('Explain Artificial Intelligence')">
-                        🧠 Explain AI
+
+                    <button
+                        class="quick-card"
+                        data-image-prompt="A futuristic AI robot standing in a beautiful cyberpunk city">
+
+                        <div class="quick-icon">🎨</div>
+
+                        <div>
+                            <strong>Create Image</strong>
+                            <small>Turn ideas into images</small>
+                        </div>
+
                     </button>
 
-                    <button onclick="useSuggestion('Give me Python code')">
-                        💻 Code लिखो
+
+                    <button
+                        class="quick-card"
+                        data-prompt="Give me a cool Arduino project idea under 1000 rupees.">
+
+                        <div class="quick-icon">🤖</div>
+
+                        <div>
+                            <strong>Get Ideas</strong>
+                            <small>Projects & creativity</small>
+                        </div>
+
                     </button>
 
                 </div>
 
             </div>
 
-        </main>
+        </section>
 
-        <!-- IMAGE PREVIEW -->
-        <div id="imagePreview"></div>
 
-        <!-- INPUT -->
-        <div class="input-container">
+        <!-- ================= IMAGE PREVIEW ================= -->
 
-            <div class="input-box">
+        <div
+            class="image-preview-area"
+            id="imagePreviewArea">
 
-                <!-- IMAGE BUTTON -->
-                <label for="imageInput" id="imageBtn">
-                    🖼️
-                </label>
+            <div class="image-preview-card">
 
-                <input
-                    type="file"
-                    id="imageInput"
-                    accept="image/*"
-                    hidden
-                >
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Selected image">
 
-                <!-- MIC BUTTON -->
-                <button
-                    id="micButton"
-                    onclick="startVoice()"
-                    title="Voice Input">
-                    🎤
-                </button>
+                <div class="image-preview-info">
 
-                <!-- TEXT AREA -->
-                <textarea
-                    id="userInput"
-                    rows="1"
-                    placeholder="ANSH AI से कुछ पूछें..."
-                    onkeydown="handleKey(event)"
-                ></textarea>
+                    <strong id="imageName">
+                        Image
+                    </strong>
 
-                <!-- SEND -->
-                <button
-                    id="sendButton"
-                    onclick="sendMessage()"
-                    title="Send">
-                    ➤
-                </button>
+                    <button
+                        id="removeImage"
+                        type="button">
+                        ×
+                    </button>
 
-            </div>
+                </div>
 
-            <div class="input-info">
-                Enter = Send • Shift + Enter = New Line
             </div>
 
         </div>
 
-        <footer>
-            ANSH AI may make mistakes. Check important information.
-        </footer>
 
-    </section>
+        <!-- ================= INPUT AREA ================= -->
+
+        <div class="input-area">
+
+            <div class="input-box">
+
+                <textarea
+                    id="userInput"
+                    placeholder="Message ANSH AI..."
+                    rows="1"
+                    autocomplete="off">
+                </textarea>
+
+
+                <div class="input-toolbar">
+
+                    <div class="toolbar-left">
+
+                        <!-- IMAGE -->
+
+                        <input
+                            type="file"
+                            id="imageInput"
+                            accept="image/png,image/jpeg,image/webp"
+                            hidden>
+
+
+                        <button
+                            class="tool-button"
+                            id="imageButton"
+                            type="button"
+                            title="Upload image">
+
+                            ＋
+
+                        </button>
+
+
+                        <!-- VOICE -->
+
+                        <button
+                            class="tool-button"
+                            id="voiceButton"
+                            type="button"
+                            title="Voice input">
+
+                            🎤
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="toolbar-right">
+
+                        <span
+                            class="character-counter"
+                            id="characterCounter">
+                            0
+                        </span>
+
+
+                        <button
+                            class="send-button"
+                            id="sendButton"
+                            type="button">
+
+                            ↑
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-hint">
+
+                ANSH AI can make mistakes.
+                Check important information.
+
+            </div>
+
+        </div>
+
+    </main>
 
 </div>
+
+
+<!-- ================= IMAGE CREATION MODAL ================= -->
+
+<div
+    class="modal-overlay"
+    id="imageModal">
+
+    <div class="image-modal">
+
+        <button
+            class="modal-close"
+            id="closeImageModal"
+            type="button">
+            ×
+        </button>
+
+
+        <div class="modal-icon">
+            🎨
+        </div>
+
+
+        <h2>
+            Create an Image
+        </h2>
+
+
+        <p>
+            Describe the image you want ANSH AI to create.
+        </p>
+
+
+        <textarea
+            id="imagePrompt"
+            placeholder="Example: A futuristic robot walking on Mars, cinematic lighting..."
+            rows="4">
+        </textarea>
+
+
+        <div class="image-options">
+
+            <button
+                class="image-style active"
+                data-style="realistic"
+                type="button">
+                Realistic
+            </button>
+
+            <button
+                class="image-style"
+                data-style="cinematic"
+                type="button">
+                Cinematic
+            </button>
+
+            <button
+                class="image-style"
+                data-style="anime"
+                type="button">
+                Anime
+            </button>
+
+            <button
+                class="image-style"
+                data-style="digital art"
+                type="button">
+                Digital Art
+            </button>
+
+        </div>
+
+
+        <button
+            class="generate-image-button"
+            id="generateImageButton"
+            type="button">
+
+            <span>✦</span>
+            Generate Image
+
+        </button>
+
+
+        <div
+            class="image-generation-status"
+            id="imageGenerationStatus">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= IMAGE RESULT MODAL ================= -->
+
+<div
+    class="modal-overlay"
+    id="imageResultModal">
+
+    <div class="image-result-modal">
+
+        <button
+            class="modal-close"
+            id="closeImageResult"
+            type="button">
+            ×
+        </button>
+
+
+        <div class="generated-image-container">
+
+            <img
+                id="generatedImage"
+                src=""
+                alt="Generated image">
+
+        </div>
+
+
+        <div class="generated-image-actions">
+
+            <button
+                id="downloadGeneratedImage"
+                type="button">
+
+                ↓ Download
+
+            </button>
+
+
+            <button
+                id="newImageButton"
+                type="button">
+
+                ✦ Create Another
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
