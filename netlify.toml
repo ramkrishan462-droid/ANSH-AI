@@ -3,8 +3,10 @@
 
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [[redirects]]
-  from = "/api/chat"
-  to = "/.netlify/functions/chat"
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
   status = 200
+  force = true

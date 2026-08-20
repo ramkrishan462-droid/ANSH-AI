@@ -14,8 +14,10 @@
     "@fal-ai/client": "^1.10.1",
     "@google/genai": "^2.18.0",
     "@huggingface/inference": "^4.13.28",
+    "@netlify/functions": "^6.0.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "openai": "^7.4.0"
+    "openai": "^7.4.0",
+    "serverless-http": "^4.0.0"
   }
 }
